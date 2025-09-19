@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love!</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(to bottom, #2C3E50, #1A1A2E);
+            color: #FFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #D4AF37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin: 25px 0;
+            color: #D4AF37;
+        }
+
+        p {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .heart {
+            color: #E94560;
+        }
+
+        /* Storybook Sections */
+        .storybook {
+            perspective: 1000px;
+            margin: 40px 0;
+        }
+
+        .page {
+            background: linear-gradient(135deg, rgba(123, 36, 28, 0.9) 0%, rgba(69, 21, 33, 0.9) 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 10px;
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.2);
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Interactive Elements */
+        .interactive-element {
+            background: rgba(53, 94, 59, 0.3);
+            border: 1px solid #D4AF37;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-element:hover {
+            background: rgba(53, 94, 59, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #7B241C, #E94560);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-placeholder::after {
+            content: 'Your Photo Here';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Love Letter */
+        .love-letter {
+            background: rgba(233, 69, 96, 0.1);
+            border-left: 4px solid #E94560;
+            padding: 25px;
+            margin: 30px 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .love-letter::before {
+            content: '"';
+            font-size: 5rem;
+            color: #E94560;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        }
+
+        /* Memory Timeline */
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: #D4AF37;
+        }
+
+        .memory {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .memory::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #7B241C;
+            border: 2px solid #D4AF37;
+        }
+
+        .memory-date {
+            font-weight: bold;
+            color: #D4AF37;
+            margin-bottom: 5px;
+        }
+
+        /* Final Surprise */
+        .final-surprise {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, rgba(123, 36, 28, 0.8) 0%, rgba(53, 94, 59, 0.8) 100%);
+            border-radius: 10px;
+            margin: 50px 0;
+        }
+
+        .surprise-button {
+            background: linear-gradient(to right, #D4AF37, #E94560);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .surprise-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Floating Elements */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #E94560;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+
+            .page {
+                padding: 20px;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: #D4AF37;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floating-hearts" id="hearts-container"></div>
+
+    <div class="container">
+        <header>
+            <h1>Happy Birthday, Mera baacha</h1>
+            <p>A LOVE THAT FEELS LIKE HEAVEN <span class="heart">♥</span></p>
+        </header>
+
+        <div class="storybook">
+            <div class="page">
+                <h2>Our Story Begins...</h2>
+                <p>JAB HUM MILE THE.. MUJHE PTA THA KI HUMARI JODI LAKHON ME EK H AND AAP OR AAPKA DIL MUJHE MERE GHAR
+                    KI
+                    TRAH LGT HO JAHA ME SABSE SAFE SABSE KHUSH OR JAHA SIRF OR SIRF MUJHE PYAR KRA JATA H</p>
+
+                <div class="interactive-element" onclick="revealMemory(1)">
+                    <h3>CLICK TO REMEMBER OUR BEST AND FIRST BEUATIFUL MOMENT</h3>
+                    <p id="memory-1" style="display: none;">MECLICK TO REMEMBER OUR BEST AND FIRST BEUATIFUL MOMENT BHOT
+                        NERVOUS THA US RAAT KO BUT AAPNE MUJHE EKDUM COMFORTABLE FEEL KARVAYA AND HMNE HUMARI FIRST KISS
+                        KRI. BY THE END OF NIGHT MUJHE PTA CHL GAYA THA KI MUJHE AAPKE SATH OR TIME SPEND KRNA H</p>
+                </div>
+            </div>
+
+            <div class="page">
+                <h2>BUILDING OUR FUTURE TOGETHER</h2>
+                <p>LOVE ISN'T ABOUT GRAND GESTURES. USKA MTLAB PYAAR PYAARE CHOTE MOMENTS TO BUILD OUR LIFE TOGETHER</p>
+
+               <div class="photo-gallery">
+                    <div class="photo-item">
+                        <!-- Replace with your photo -->
+                        <img src="New folder (2)/IMG-20250908-WA0005.jpg" alt="Our First Date">
+                        <div class="photo-caption">Our first date</div>
+                    </div>
+                    <div class="photo-item">
+                        <!-- Replace with your photo -->
+                        <img src="New folder (2)/IMG-20250908-WA0007.jpg" alt="">
+                        <div class="photo-caption"></div>
+                    </div>
+                    <div class="photo-item">
+                        <!-- Replace with your photo -->
+                        <img  src="New folder (2)/IMG-20250908-WA0004.jpg" alt="">
+                        <div class="photo-caption"></div>
+                    </div>
+                </div>
+                <ul class="timeline">
+                    <li class="memory">
+                        <div class="memory-date">JULY 7</div>
+                        <div class="memory-content">IS DIN HUMNE EK DUSRE KO PHLI BAAR DEKHA THA</div>
+                    </li>
+                    <li class="memory">
+                        <div class="memory-date">JANUARY 10</div>
+                        <div class="memory-content">IS DIN HUMNE EK DUSRE KO APNI FEELINGS BAATYI THI AND HUM HUSBAND
+                            WIFE BAN GYE THE</div>
+                    </li>
+                    <li class="memory">
+                        <div class="memory-date">MARCH 7</div>
+                        <div class="memory-content">VOH RAAT JIS DIN HUM SAARI RAAT JAGE THE OR EK DUSRE KE SAR PE MUH
+                            ME HATH FER RHE THE AUR KISS KRRE THE LIPS GAAL OR HATH PE</div>
+                    </li>
+                    <li class="memory">
+                        <div class="memory-date">APRIL 10</div>
+                        <div class="memory-content">HUMAARA DUSRA BEST DIN JIS DIN HUMNE BHOT SAARA ROMANCE KRA THA BINA
+                            KISI DAR KE COMFORTABLE HOKE OR APNE EK DUSRE KO GIFTS BHI DIYE THE</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="page">
+                <h2>What You Mean To Me</h2>
+
+                <div class="love-letter">
+                    <p>My dearest WIFE JI,</p>
+                    <p>MERI JINDGI ME AAPKA AANA BUSS AANA NHI MERE LIYE EK JEEVANDAN THA OR AAP VOH HO JISNE MERE
+                        JINDGI KE
+                        ANDHERE KO MANDIR BANA DIYA JO PHLE KABHI SAMSHAN THA. AAP MERI JINDGI KA SABS BADA GIFT HO JISE
+                        ME BHOT
+                        BHOT BHOT BHOT BHOT JYDA PYAAR KRTA HU JO WORDS ME BATA NI SAKTA WORDS KAM HOJYNGE. OR AAP ITTI
+                        SUNDAR
+                        HO KI MUJHE FILTER KI JRURAT PAD JAYEE BETUUU AAP MERSE BHOT PYAAR KRTE HO JO AAJ TAK KISI NE NI
+                        KIYA
+                        THANKU MERI LIFE ME AANE KE LIYE OR ISE SABSE KHUBSURAT BANANE KE LIYE MERI SAARI JINDGI AAP PE
+                        KURBAN H
+                        MERI JAAN OR AAPKA HUSBAND JI HUMESHA AAPKE SATH RAHEGA I PROMISE YOU JAAN. I LOVE YOU MY
+                        BIRTHAY GIRL
+                        MERI GUDIYAN MERA BETUUUU😘😘😘 </p>
+
+                    <p>Forever yours BABY,</p>
+                </div>
+
+                <div class="interactive-element" onclick="showLoveQuote()">
+                    <h3>Click for a reason why I love you</h3>
+                    <p id="love-quote"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="final-surprise">
+            <h2>>AAPKE LIYE AAPKE OR MERE IS SPECIAL DIN PE</h2>
+            <p>ME PRAY KRTA HU KI AAP MERE LIFE ME JINI KHUSHI LAYE HO BHAGWAN USKI 100 GUNA AAPKO DEDE</p>
+
+            <button class="surprise-button" onclick="playBirthdaySong()">Click for a Birthday Surprise!</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>CREATED WITH BHOT SAARA PYAAR AAPKE LIYE • FOREVERS YOUR JAAN</p>
+    </footer>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts-container');
+            const hearts = ['♥', '❤', '💕', '💖'];
+            const colors = ['#E94560', '#D4AF37', '#7B241C', '#355E3B'];
+
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${6 + Math.random() * 10}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.fontSize = `${15 + Math.random() * 20}px`;
+
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Interactive memory reveal
+        function revealMemory(id) {
+            const memory = document.getElementById(`memory-${id}`);
+            if (memory.style.display === 'none') {
+                memory.style.display = 'block';
+            } else {
+                memory.style.display = 'none';
+            }
+        }
+
+        // Love quote generator
+        function showLoveQuote() {
+            const quotes = [
+                "I love your smile that brightens my darkest days.",
+                "I love how you make ordinary moments extraordinary.",
+                "I love your kindness that touches everyone around you.",
+                "I love your passion for the things you care about.",
+                "I love how you understand me without words.",
+                "I love your strength that inspires me to be better.",
+                "I love the way you laugh with your whole body.",
+                "I love how you feel like home wherever we are."
+            ];
+
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('love-quote').textContent = randomQuote;
+        }
+
+        // Birthday surprise
+        function playBirthdaySong() {
+            alert("Happy Birthday to you! 🎂\nHappy Birthday to you! 🎉\nHappy Birthday, my love! ❤\nHappy Birthday to you! 🎶\n\nI love you more than words can express!");
+        }
+
+        // Initialize page effects
+        window.onload = function () {
+            createHearts();
+
+            // Animate pages on scroll
+            const pages = document.querySelectorAll('.page');
+            pages.forEach((page, index) => {
+                page.style.opacity = '0';
+                page.style.transform = 'rotateY(20deg) translateX(50px)';
+                page.style.transition = 'all 1s ease';
+
+                setTimeout(() => {
+                    page.style.opacity = '1';
+                    page.style.transform = 'rotateY(0) translateX(0)';
+                }, 300 + (index * 300));
+            });
+        };
+    </script>
+</body>
+
+</html>
